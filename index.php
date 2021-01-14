@@ -29,7 +29,7 @@ $users = $repository->findAll();
             <td><?php echo $user->getEmail() ?></td>
             <td>
                 <a href="read.php?id=<?php echo $user->getId() ?>">
-                    Détail
+                    Détails
                 </a>
                 &nbsp;
                 <a href="update.php?id=<?php echo $user->getId(); ?>">
