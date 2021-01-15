@@ -17,60 +17,39 @@ $users = $repository->findAll();
 $ressources = $repositoryRessource->findAll();
 
 ?>
-<table border="1">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Email</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($users as $user) { ?>
-        <tr>
-            <td><?php echo $user->getId() ?></td>
-            <td><?php echo $user->getEmail() ?></td>
-            <td>
-                <a href="read.php?id=<?php echo $user->getId() ?>">
-                    Détails
-                </a>
-                &nbsp;
-                <a href="update.php?id=<?php echo $user->getId(); ?>">
-                    Modifier
-                </a>
-                &nbsp;
-                <a href="delete.php?id=<?php echo $user->getId(); ?>">
-                    Supprimer
-                </a>
-            </td>
-        </tr>
-        <?php } ?>
-    </tbody>
-</table>
-<table border="1">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Titre</th>
-            <th>Contenu</th>
-            <th>Email</th>
-            <th>Avatar</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($ressources as $ressource) { ?>
-        <tr>
-            <td><?php echo $ressource->getId() ?></td>
-            <td><?php echo $ressource->getTitre() ?></td>
-            <td><?php echo $ressource->getContenu() ?></td>
-            <td><?php echo $ressource->getCreateur()->getEmail() ?></td>
-            <td><?php echo $ressource->getCreateur()->getAvatar() ?></td>
-        </tr>
-        <?php } ?>
-    </tbody>
-</table>
-<p>
-    <a href="create.php">Créer un nouvel utilisateur</a>
-</p>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="design/listing.scss" media="screen"/>
+</head>
 
+<div class="container">
+  <h2>Liste des ressources</h2>
+  <ul class="responsive-table">
+    <li class="table-header">
+      <div class="col col-1"></div>
+      <div class="col col-2">Titre</div>
+      <div class="col col-3">Créateur</div>
+      <div class="col col-4">Actions</div>
+    </li>
+    <?php foreach ($ressources as $ressource) { ?>
+     <li class="table-row">
+       <div class="col col-1" data-label="id"><td><?php echo $ressource->getId() ?></td></div>
+       <div class="col col-2" data-label="titre"><td><?php echo $ressource->getTitre() ?></td></div>
+       <div class="col col-3" data-label="createur_email"><td><?php echo $ressource->getCreateur()->getEmail() ?></td></div>
+       <div class="col col-4" data-label="actions"><td>
+        <a class="btn-see" href="read.php?id=<?php echo $ressource->getId() ?>">
+            <i class="fa fa-eye"></i>
+        </a>
+        &nbsp;
+        <a class="btn-edit" href="update.php?id=<?php echo $ressource->getId(); ?>">
+            <i class="fa fa-edit"></i>
+        </a>
+        &nbsp;
+        <a class="btn-delete" href="delete.php?id=<?php echo $ressource->getId(); ?>">
+            <i class="fa fa-trash"></i>
+        </a>
+       </td></div>
+     </li>
+    <?php } ?>
+  </ul>
+</div>
