@@ -27,7 +27,7 @@ if (isset($_POST['login'])) {
     }
 }
 ?>
-<link rel="stylesheet" type="text/css" href="design/login.csss" media="screen"/>
+<link rel="stylesheet" type="text/css" href="design/login.scss" media="screen"/>
 <div class="login-page">
   <div class="form">
     <form action="login.php" method="post" class="login-form">
