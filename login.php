@@ -27,21 +27,16 @@ if (isset($_POST['login'])) {
     }
 }
 ?>
-<form action="login.php" method="post">
-	<p>
-		<label for="email">Email</label>
-		<input type="text" id="email" name="email">
-	</p>
-	<p>
-		<label for="password">Password</label>
-		<input type="password" id="password" name="password">
-	</p>
-    <?php if (!empty($error)) { ?>
-    <p style="color:red"><?php echo $error; ?></p>
-    <?php } ?>
-	<p>
-		<button type="submit" name="login">
-			Se connecter
-		</button>
-	</p>
-</form>
+<link rel="stylesheet" type="text/css" href="design/login.csss" media="screen"/>
+<div class="login-page">
+  <div class="form">
+    <form action="login.php" method="post" class="login-form">
+      <input type="text" placeholder="name" id="email" name="email"/>
+      <input type="password" placeholder="password" id="password" name="password"/>
+        <?php if (!empty($error)) { ?>
+            <p style="color:red"><?php echo $error; ?></p>
+        <?php } ?>  
+      <button type="submit" name="login">se connecter</button>
+    </form>
+  </div>
+</div>
