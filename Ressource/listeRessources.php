@@ -51,5 +51,8 @@ $ressources = $repositoryRessource->findAll();
        </td></div>
      </li>
     <?php } ?>
+    <div class="btn-create blue"><td>
+        Créér une nouvelle ressource
+     </td></div>
   </ul>
 </div>
