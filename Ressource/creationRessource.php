@@ -15,7 +15,7 @@ $repository = new UserRepository($connection);
 $security = new Security($repository);
 $security->denyAccessUntilAuthenticated();
 
-$uploadDir = './upload';
+$uploadDir = '../upload';
 $user = new User();
 $errors = [];
 

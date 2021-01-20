@@ -3,6 +3,7 @@
 namespace Security;
 
 use Repository\UserRepository;
+use Repository\RessourceRepository;
 
 class Security {
     public const KEY = 'user_id';

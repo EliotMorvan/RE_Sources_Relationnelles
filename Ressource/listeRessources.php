@@ -36,19 +36,20 @@ $ressources = $repositoryRessource->findAll();
        <div class="col col-2" data-label="titre"><td><?php echo $ressource->getTitre() ?></td></div>
        <div class="col col-3" data-label="createur_email"><td><?php echo $ressource->getCreateur()->getEmail() ?></td></div>
        <div class="col col-4" data-label="actions"><td>
-        <a class="btn-see" href="read.php?id=<?php echo $ressource->getId() ?>">
+        <a class="btn-see" href="../read.php?id=<?php echo $ressource->getId() ?>">
             <i class="fa fa-eye"></i>
         </a>
-        <a class="btn-edit" href="update.php?id=<?php echo $ressource->getId(); ?>">
+         <a class="btn-edit" href="../Ressource/creationRessource.php?id=<?php echo $ressource->getId(); ?>">
             <i class="fa fa-edit"></i>
         </a>
-        <a class="btn-delete" href="delete.php?id=<?php echo $ressource->getId(); ?>">
+         <a class="btn-delete" href="../Ressource/deleteRessource.php?id=<?php echo $ressource->getId(); ?>">
             <i class="fa fa-trash"></i>
         </a>
        </td></div>
      </li>
     <?php } ?>
-    <div class="btn-create blue"><td>
+    <div class="btn-create blue" href="creationRessource.php?id=<?php echo $ressource->getId(); ?>">
+    <td>
         Créér une nouvelle ressource
      </td></div>
   </ul>
