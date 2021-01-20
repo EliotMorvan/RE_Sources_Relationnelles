@@ -1,0 +1,50 @@
+.menu-row {
+    display: flex;
+}
+
+.menu-column-1 {
+    flex: 15%;
+}
+
+.menu-column-2 {
+    flex: 85%;
+}
+
+.liste-ressource {
+    display: inline-block;
+}
+
+.menu-ol {
+    list-style: none;
+    display: contents;
+}
+.menu-li {
+    padding-top: 25;
+    padding-bottom: 25;
+    place-content: start;
+    margin: 0.25rem;
+}
+.menu-li:hover {
+    cursor: pointer;
+}
+.menu-btn {
+    border: none;
+    padding-left: 20%;
+    background: none;
+    font-family: monospace;
+    font-size: 150%;
+}
+.menu-btn:hover {
+    cursor: pointer;
+}
+.menu-li::before {
+    display: inline-block;
+    line-height: 2rem;
+    color: white;
+    text-align: center;
+    margin-right: 0.5rem;
+}
+
+body {
+    font-family: monospace;
+}

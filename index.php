@@ -11,5 +11,5 @@ $repository = new UserRepository($connection);
 $security = new Security($repository);
 $security->denyAccessUntilAuthenticated();
 
-header('Location: Ressource/listeRessources.php');
+header('Location: Menu/menu.php');
 exit;
