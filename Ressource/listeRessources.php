@@ -36,10 +36,10 @@ $ressources = $repositoryRessource->findAll();
        <div class="col col-2" data-label="titre"><td><?php echo $ressource->getTitre() ?></td></div>
        <div class="col col-3" data-label="createur_email"><td><?php echo $ressource->getCreateur()->getEmail() ?></td></div>
        <div class="col col-4" data-label="actions"><td>
-        <a class="btn-see" href="../read.php?id=<?php echo $ressource->getId() ?>">
+        <a class="btn-see" href="../Ressource/readRessource.php?id=<?php echo $ressource->getId() ?>">
             <i class="fa fa-eye"></i>
         </a>
-         <a class="btn-edit" href="../Ressource/creationRessource.php?id=<?php echo $ressource->getId(); ?>">
+         <a class="btn-edit" href="../Ressource/updateRessource.php?id=<?php echo $ressource->getId(); ?>">
             <i class="fa fa-edit"></i>
         </a>
          <a class="btn-delete" href="../Ressource/deleteRessource.php?id=<?php echo $ressource->getId(); ?>">

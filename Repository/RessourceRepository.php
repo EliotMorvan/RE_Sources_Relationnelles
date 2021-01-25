@@ -37,6 +37,31 @@ class RessourceRepository {
         // Renvoi la liste des utilisateurs
         return $ressources;
     }
+    /**
+     * Finds one ressource by its id.
+     * 
+     * @param int $id
+     * 
+     * @return Ressource|null
+     */
+    public function findOneById(int $id): ?Ressource
+    {
+        $select = $this->connection->query(
+            'SELECT id, titre, contenu, id_user '.
+            'FROM ressource '.
+            'WHERE id=' . $id . ' ' .
+            'LIMIT 1'
+        );
+
+        $data = $select->fetch(PDO::FETCH_ASSOC);
+
+        if (false === $data) {
+            return null;
+        }
+
+        return $this->buildRessource($data);
+    }
+
     private function buildRessource(array $data): Ressource
     {
         $ressource = new Ressource();

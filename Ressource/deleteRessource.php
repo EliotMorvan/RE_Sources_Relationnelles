@@ -2,18 +2,21 @@
 
 require '../boot.php';
 
+use Entity\Ressource;
+use Entity\User;
+use Manager\RessourceManager;
+use Validator\RessourceValidator;
+use Http\Response;
 use Repository\RessourceRepository;
 use Repository\UserRepository;
-use Manager\UserManager;
-use Http\Response;
 use Security\Security;
 
-$ressourceRepository = new RessourceRepository($connection);
-$userRepository = new UserRepository($connection);
+$Repository = new RessourceRepository($connection);
+//$userRepository = new UserRepository($connection);
 
 // Securise la page
-$security = new Security($userRepository);
-$security->denyAccessUntilAuthenticated();
+//$security = new Security($Repository);
+//$security->denyAccessUntilAuthenticated();
 
 // localhost:8000/delete.php?id=1
 // Si l'index 'id' existe dans les paramètres d'URL ($_GET)
@@ -26,10 +29,10 @@ if (isset($_GET['id']) && 0 < $_GET['id']) {
     exit;
 }
 
-$ressource = $userRepository->findOneById($id);
+$ressource = $Repository->findOneById($id);
 
 if (null === $ressource) {
-    echo 'Utilisateur introuvable.';
+    echo 'Ressource introuvable.';
     exit;
 }
 
@@ -40,11 +43,11 @@ if (isset($_POST['delete_ressource'])) {
 
     // Si l'internaute a confirmé
     if ($confirm) {
-        $manager = new UserManager($connection);
+        $manager = new RessourceManager($connection);
         $manager->remove($ressource);
 
         // Rediriger l'internaute
-        Response::redirect('index.php');
+        Response::redirect('../Ressource/listeRessources.php');
     }
 }
 
