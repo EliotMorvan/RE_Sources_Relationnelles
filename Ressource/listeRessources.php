@@ -48,9 +48,9 @@ $ressources = $repositoryRessource->findAll();
        </td></div>
      </li>
     <?php } ?>
-    <div class="btn-create blue" href="creationRessource.php?id=<?php echo $ressource->getId(); ?>">
+    <a class="btn-create blue" href="../Ressource/creationRessource.php?id=<?php echo $ressource->getId(); ?>">
     <td>
         Créér une nouvelle ressource
-     </td></div>
+     </td></a>
   </ul>
 </div>
