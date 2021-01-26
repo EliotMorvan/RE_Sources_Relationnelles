@@ -52,7 +52,7 @@ if (isset($_POST['delete_ressource'])) {
 }
 
 ?>
-<form action="delete.php?id=<?php echo $ressource->getId(); ?>" method="post">
+<form action="deleteRessource.php?id=<?php echo $ressource->getId(); ?>" method="post">
     <p>
         <input type="checkbox" id="confirm" name="confirm" value="1">
         <label for="confirm">Confirmer la suppression</label>

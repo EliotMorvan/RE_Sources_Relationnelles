@@ -47,8 +47,8 @@ class RessourceRepository {
     public function findOneById(int $id): ?Ressource
     {
         $select = $this->connection->query(
-            'SELECT id, titre, contenu, id_user '.
-            'FROM ressource '.
+            'SELECT id, titre, contenu, id_user, email, password, avatar '.
+            'FROM ressource NATURAL JOIN user '.
             'WHERE id=' . $id . ' ' .
             'LIMIT 1'
         );
