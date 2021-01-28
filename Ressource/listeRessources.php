@@ -23,7 +23,7 @@ $ressources = $repositoryRessource->findAll();
 
 <div class="container">
   <h2 class="lr-h2">Liste des ressources</h2>
-  <ul class="responsive-table">
+  <ul class="responsive-table lr-table">
     <li class="table-header">
       <div class="col col-1"></div>
       <div class="col col-2">Titre</div>

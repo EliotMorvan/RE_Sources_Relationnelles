@@ -4,6 +4,7 @@
 
 .menu-column-1 {
     flex: 15%;
+    width: 150px;
 }
 
 .menu-column-2 {
@@ -23,6 +24,7 @@
     padding-bottom: 25;
     place-content: start;
     margin: 0.25rem;
+    width: 200px;
 }
 .menu-li:hover {
     cursor: pointer;

@@ -41,7 +41,7 @@ if (isset($_POST['create_ressource'])) {
         $manager->insert($ressource);
 
         // Rediriger l'internaute
-        Response::redirect('../Ressource/listeRessources.php?id=' . $ressource->getId());
+        Response::redirect('../Menu/menu.php?id=' . $ressource->getId());
     }
 }
 

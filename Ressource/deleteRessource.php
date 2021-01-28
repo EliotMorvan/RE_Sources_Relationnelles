@@ -32,7 +32,7 @@ if (isset($_GET['id']) && 0 < $_GET['id']) {
 $ressource = $Repository->findOneById($id);
 
 if (null === $ressource) {
-    echo 'Ressource introuvable.';
+    echo 'Ressource introuvable. ' . $id . ' bycréycu';
     exit;
 }
 
@@ -47,7 +47,7 @@ if (isset($_POST['delete_ressource'])) {
         $manager->remove($ressource);
 
         // Rediriger l'internaute
-        Response::redirect('../Ressource/listeRessources.php');
+        Response::redirect('../Menu/menu.php');
     }
 }
 

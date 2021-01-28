@@ -47,9 +47,10 @@ class RessourceRepository {
     public function findOneById(int $id): ?Ressource
     {
         $select = $this->connection->query(
-            'SELECT id, titre, contenu, id_user, email, password, avatar '.
-            'FROM ressource NATURAL JOIN user '.
-            'WHERE id=' . $id . ' ' .
+            'SELECT ressource.id, titre, contenu, id_user, email, password, avatar '.
+            'FROM ressource JOIN user '.
+            'ON user.id = ressource.id_user '.
+            'WHERE ressource.id=' . $id . ' ' .
             'LIMIT 1'
         );
 
@@ -75,5 +76,13 @@ class RessourceRepository {
         $createur->setAvatar($data['avatar']);
         $ressource->setCreateur($createur);
         return $ressource;
+    }
+
+    function console_log($output, $with_script_tags = true) {
+        $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . ');';
+        if ($with_script_tags) {
+            $js_code = '<script>' . $js_code . '</script>';
+        }
+        echo $js_code;
     }
 }
