@@ -28,7 +28,7 @@ if (isset($_POST['create_ressource'])) {
     $ressource
         ->setTitre($_POST['titre'])
         ->setContenu($_POST['contenu'])
-        ->setCreateur($_POST['id_user']);
+        ->setCreateur($security->getCurrentUserId());
 
     // Valide l'objet ressource
     $validator = new ressourceValidator();
@@ -67,14 +67,6 @@ if (isset($_POST['create_ressource'])) {
         <?php } ?>
     </p>
     <p>
-        <label for="id_user">Createur</label>
-        <input type="id_user" id="id_user" name="id_user"
-               value="<?php echo $ressource->getContenu(); ?>">
-        <?php if (isset($errors['id_user'])) { ?>
-        <br><span style="color:red"><?php echo $errors['id_user']; ?></span>
-        <?php } ?>
-    </p>
-        <p>
         <button type="submit" name="create_ressource">
             Enregistrer
         </button>

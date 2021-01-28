@@ -2,6 +2,7 @@
 
 namespace Security;
 
+use Entity\User;
 use Repository\UserRepository;
 use Repository\RessourceRepository;
 
@@ -21,6 +22,16 @@ class Security {
     public function __construct(UserRepository $repository)
     {
         $this->repository = $repository;
+    }
+
+    public function getCurrentUserId(): ?int
+    {
+        // Si la session contient l'identifiant de l'utilisateur
+        if (isset($_SESSION[self::KEY])) {
+            return intval($_SESSION[self::KEY]);
+        } else {
+            return -1;
+        }
     }
 
     public function denyAccessUntilAuthenticated(): void
