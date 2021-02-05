@@ -5,9 +5,13 @@ require 'boot.php';
 use Entity\User;
 use Entity\Ressource;
 use Repository\UserRepository;
+use Http\Response;
 use Repository\RessourceRepository;
 
-// localhost:8000/read.php?id=1
+
+$repository = new RessourceRepository($connection);
+
+// localhost:8000/readressource.php?id=1
 // Si l'index 'id' existe dans les paramètres d'URL ($_GET)
 if (isset($_GET['id']) && 0 < $_GET['id']) {
     // Récupère l'identifiant
@@ -19,11 +23,9 @@ if (isset($_GET['id']) && 0 < $_GET['id']) {
 }
 
 
-$repository = new RessourceRepository($connection);
-
 $ressource = $repository->findOneById($id);
 
-if (null === $user) {
+if (null === $ressource) {
     echo 'Ressource introuvable.';
     exit;
 }
@@ -57,5 +59,5 @@ if (null === $user) {
     </tbody>
 </table>
 <p>
-    <a href="listeRessources.php">Retour à la liste</a>
+    <a href="../Menu/menu.php">Retour à la liste</a>
 </p>
