@@ -47,22 +47,26 @@ if (isset($_POST['create_ressource'])) {
 
 ?>
 <link rel="stylesheet" type="text/css" href="../trix-main/dist/trix.css">
+<link rel="stylesheet" type="text/css" href="creationRessource.scss">
+<link rel="stylesheet" type="text/css" href="ressource.scss">
 <script type="text/javascript" src="../trix-main/dist/trix.js"></script>
+
 <!-- Attention à l'attribut "enctype" pour que l'upload fonctionne ! -->
-<form action="creationRessource.php" 
+<form class="crea-res-form"
+      action="creationRessource.php" 
       enctype="multipart/form-data"
       method="post">
     <p>
-        <label for="titre">Titre</label>
-        <input type="text" id="titre" name="titre"
+        <label class="crea-res-label" for="titre">Titre</label>
+        <input class="crea-res-input" type="text" id="titre" name="titre"
                value="<?php echo $ressource->getTitre(); ?>">
         <?php if (isset($errors['titre'])) { ?>
         <br><span style="color:red"><?php echo $errors['titre']; ?></span>
         <?php } ?>
     </p>
     <p>
-        <label for="contenu">Contenu</label>
-        <input id="contenu" type="hidden" name="contenu" 
+        <label class="crea-res-label" for="contenu">Contenu</label>
+        <input class="crea-res-input" id="contenu" type="hidden" name="contenu" 
             value="<?php echo $ressource->getContenu(); ?>">
         <trix-editor input="contenu"></trix-editor>
         <?php if (isset($errors['contenu'])) { ?>
@@ -70,8 +74,8 @@ if (isset($_POST['create_ressource'])) {
         <?php } ?>
     </p>
     <p>
-        <button type="submit" name="create_ressource">
-            Enregistrer
+        <button class="btn-create blue" type="submit" name="create_ressource">
+            Créér la ressource
         </button>
     </p>
 </form>

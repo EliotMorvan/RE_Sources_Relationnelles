@@ -44,7 +44,8 @@ class RessourceManager {
             'UPDATE ressource ' . 
             'SET titre=:param_titre, '.
                 'contenu=:param_contenu, '.
-                'id_user=:param_id_user, '.
+                'id=:param_id, '.
+                'id_user=:param_id_user '.
             'WHERE id=:param_id LIMIT 1'
         );
 
@@ -52,8 +53,8 @@ class RessourceManager {
         $update->execute([
             'param_titre'  => $ressource->gettitre(),
             'param_contenu' => $ressource->getcontenu(),
-            'param_id_user' => $ressource->getcreateur(),
-            'param_id'   => $ressource->getId(),
+            'param_id' => $ressource->getId(),
+            'param_id_user' => $ressource->getCreateur()->getId(),
         ]);
     }
 

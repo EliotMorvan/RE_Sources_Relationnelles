@@ -1,6 +1,6 @@
 <?php
 
-require 'boot.php';
+require '../boot.php';
 
 use Entity\User;
 use Entity\Ressource;
@@ -36,7 +36,7 @@ if (null === $ressource) {
 }
 
 // Si le formulaire a été soumis
-// ('update_user' correspond à l'attribut 'name' du bouton submit)
+// ('update_ressource' correspond à l'attribut 'name' du bouton submit)
 if (isset($_POST['update_ressource'])) {
     // Récupérer les données du formulaire
     $ressource
@@ -51,28 +51,41 @@ if (isset($_POST['update_ressource'])) {
     $manager->update($ressource);
 
     // Rediriger l'internaute
-    Response::redirect('listeRessource.php');
+    Response::redirect('../Menu/menu.php');
 }
 
 ?>
+<link rel="stylesheet" type="text/css" href="../trix-main/dist/trix.css">
+<link rel="stylesheet" type="text/css" href="creationRessource.scss">
+<link rel="stylesheet" type="text/css" href="ressource.scss">
+<script type="text/javascript" src="../trix-main/dist/trix.js"></script>
 <!-- Attention à l'attribut action : préciser l'identifiant de l'utilisateur -->
 <!-- Attention à l'attribut "enctype" pour que l'upload fonctionne ! -->
-<form action="updateRessource.php?id=<?php echo $ressource->getId(); ?>"
+
+<form class="crea-res-form"
+      action="updateRessource.php?id=<?php echo $ressource->getId(); ?>" 
       enctype="multipart/form-data"
       method="post">
     <p>
-        <label for="titre">Titre</label>
-        <input type="text" id="titre" name="titre" 
+        <label class="crea-res-label" for="titre">Titre</label>
+        <input class="crea-res-input" type="text" id="titre" name="titre"
                value="<?php echo $ressource->getTitre(); ?>">
+        <?php if (isset($errors['titre'])) { ?>
+        <br><span style="color:red"><?php echo $errors['titre']; ?></span>
+        <?php } ?>
     </p>
     <p>
-        <label for="contenu">contenu</label>
-        <input type="contenu" id="contenu" name="contenu"
-               value="<?php echo $ressource->getContenu(); ?>">
+        <label class="crea-res-label" for="contenu">Contenu</label>
+        <input class="crea-res-input" id="contenu" type="hidden" name="contenu"
+           value="<?php echo $ressource->getContenu(); ?>">
+        <trix-editor input="contenu"></trix-editor>
+        <?php if (isset($errors['contenu'])) { ?>
+        <br><span style="color:red"><?php echo $errors['contenu']; ?></span>
+        <?php } ?>
     </p>
     <p>
-        <button type="submit" name="update_ressource">
-            Mettre à jour
-        </button>
+    <button class="btn-create blue" type="submit" name="update_ressource">
+        Mettre à jour
+    </button>
     </p>
 </form>

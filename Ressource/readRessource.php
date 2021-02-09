@@ -1,6 +1,6 @@
 <?php
 
-require 'boot.php';
+require '../boot.php';
 
 use Entity\User;
 use Entity\Ressource;

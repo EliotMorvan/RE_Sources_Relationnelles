@@ -21,9 +21,6 @@ class RessourceValidator {
             $errors['titre'] = "Le titre ne doit pas être vide.";
         }
 
-        // TODO Validation email
-        // -> utiliser la fonction filter_var (voir doc php)
-
         if (empty($ressource->getcontenu())) {
             $errors['contenu'] = "Le contenu ne doit pas être vide.";
         }
